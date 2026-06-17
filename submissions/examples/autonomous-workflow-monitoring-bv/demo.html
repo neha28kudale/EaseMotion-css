@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Workflow Monitoring Center</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- Header -->
+  <header class="dash-header">
+    <div class="dash-title">
+      <span class="status-dot pulse"></span>
+      <h1>Workflow Monitoring Center</h1>
+    </div>
+    <div class="dash-meta">
+      <span class="badge badge-live">LIVE</span>
+      <span class="timestamp">Last sync: 2s ago</span>
+    </div>
+  </header>
+
+  <!-- Telemetry Stats -->
+  <section class="telemetry-grid">
+
+    <div class="telemetry-card">
+      <div class="telemetry-label">Active Workflows</div>
+      <div class="telemetry-value">
+        <span class="count-up">247</span>
+      </div>
+      <div class="telemetry-bar">
+        <div class="bar-fill" style="width: 82%"></div>
+      </div>
+      <div class="telemetry-sub">↑ 12 from last hour</div>
+    </div>
+
+    <div class="telemetry-card">
+      <div class="telemetry-label">Success Rate</div>
+      <div class="telemetry-value success">
+        <span>98.4%</span>
+      </div>
+      <div class="telemetry-bar">
+        <div class="bar-fill success" style="width: 98%"></div>
+      </div>
+      <div class="telemetry-sub">↑ 0.6% vs yesterday</div>
+    </div>
+
+    <div class="telemetry-card">
+      <div class="telemetry-label">Avg. Latency</div>
+      <div class="telemetry-value warn">
+        <span>143ms</span>
+      </div>
+      <div class="telemetry-bar">
+        <div class="bar-fill warn" style="width: 43%"></div>
+      </div>
+      <div class="telemetry-sub">↓ 8ms improvement</div>
+    </div>
+
+    <div class="telemetry-card">
+      <div class="telemetry-label">Error Queue</div>
+      <div class="telemetry-value danger">
+        <span>3</span>
+      </div>
+      <div class="telemetry-bar">
+        <div class="bar-fill danger" style="width: 3%"></div>
+      </div>
+      <div class="telemetry-sub">Requires attention</div>
+    </div>
+
+  </section>
+
+  <div class="main-grid">
+
+    <!-- Agent Logs -->
+    <section class="panel logs-panel">
+      <div class="panel-header">
+        <h2>Active Agent Logs</h2>
+        <span class="badge badge-live">STREAMING</span>
+      </div>
+      <div class="logs-list">
+
+        <div class="log-entry log-success">
+          <span class="log-icon">✓</span>
+          <div class="log-body">
+            <span class="log-agent">agent-worker-07</span>
+            <span class="log-msg">Completed task batch #4821 — 50 items processed</span>
+          </div>
+          <span class="log-time">00:02</span>
+        </div>
+
+        <div class="log-entry log-info log-animate">
+          <span class="log-icon">▶</span>
+          <div class="log-body">
+            <span class="log-agent">agent-scheduler-02</span>
+            <span class="log-msg">Dispatching cron job: nightly-cleanup — 12 sub-tasks queued</span>
+          </div>
+          <span class="log-time">00:05</span>
+        </div>
+
+        <div class="log-entry log-warn">
+          <span class="log-icon">⚠</span>
+          <div class="log-body">
+            <span class="log-agent">agent-sync-11</span>
+            <span class="log-msg">Retry #2 — upstream service slow (timeout 2400ms)</span>
+          </div>
+          <span class="log-time">00:09</span>
+        </div>
+
+        <div class="log-entry log-success">
+          <span class="log-icon">✓</span>
+          <div class="log-body">
+            <span class="log-agent">agent-pipeline-03</span>
+            <span class="log-msg">ETL pipeline stage 3/4 complete — 98% throughput</span>
+          </div>
+          <span class="log-time">00:13</span>
+        </div>
+
+        <div class="log-entry log-error">
+          <span class="log-icon">✕</span>
+          <div class="log-body">
+            <span class="log-agent">agent-notify-09</span>
+            <span class="log-msg">Failed to reach webhook endpoint — connection refused</span>
+          </div>
+          <span class="log-time">00:17</span>
+        </div>
+
+        <div class="log-entry log-info log-animate">
+          <span class="log-icon">▶</span>
+          <div class="log-body">
+            <span class="log-agent">agent-worker-12</span>
+            <span class="log-msg">Processing inference batch — 320 records in queue</span>
+          </div>
+          <span class="log-time">00:21</span>
+        </div>
+
+        <div class="log-entry log-success">
+          <span class="log-icon">✓</span>
+          <div class="log-body">
+            <span class="log-agent">agent-auth-01</span>
+            <span class="log-msg">Token rotation complete — 1,204 sessions refreshed</span>
+          </div>
+          <span class="log-time">00:24</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Validation Checklist -->
+    <section class="panel checklist-panel">
+      <div class="panel-header">
+        <h2>Workflow Validation</h2>
+        <span class="check-score">11 / 13</span>
+      </div>
+      <ul class="checklist">
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Schema validation</span>
+            <span class="check-detail">All payloads conform to v2.4 spec</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Auth token validity</span>
+            <span class="check-detail">OAuth2 scopes verified on 247 agents</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Data pipeline integrity</span>
+            <span class="check-detail">Checksums match across all 4 stages</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-fail">
+          <span class="check-box">✕</span>
+          <div class="check-content">
+            <span class="check-name">Webhook delivery</span>
+            <span class="check-detail">Endpoint /notify/v2 unreachable (agent-notify-09)</span>
+          </div>
+          <span class="check-status fail">FAIL</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Rate limit headroom</span>
+            <span class="check-detail">At 34% of quota — within safe bounds</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-warn">
+          <span class="check-box">~</span>
+          <div class="check-content">
+            <span class="check-name">Latency SLA</span>
+            <span class="check-detail">143ms avg — threshold is 150ms (marginal)</span>
+          </div>
+          <span class="check-status warn">WARN</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Queue depth</span>
+            <span class="check-detail">320 items — well under 5,000 limit</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Retry policy active</span>
+            <span class="check-detail">Exponential backoff enabled on all workers</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Secrets rotation</span>
+            <span class="check-detail">Last rotated 6h ago — next in 18h</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Agent heartbeats</span>
+            <span class="check-detail">244 / 247 responding within 5s</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Log archival</span>
+            <span class="check-detail">S3 sink flushed — 0 buffered events</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+        <li class="check-item check-fail">
+          <span class="check-box">✕</span>
+          <div class="check-content">
+            <span class="check-name">Upstream dependency</span>
+            <span class="check-detail">payments-api reporting elevated 5xx (1.4%)</span>
+          </div>
+          <span class="check-status fail">FAIL</span>
+        </li>
+
+        <li class="check-item check-pass">
+          <span class="check-box">✓</span>
+          <div class="check-content">
+            <span class="check-name">Scheduler lock</span>
+            <span class="check-detail">Distributed lock held by scheduler-02</span>
+          </div>
+          <span class="check-status pass">PASS</span>
+        </li>
+
+      </ul>
+    </section>
+
+  </div>
+
+</div>
+
+</body>
+</html>
